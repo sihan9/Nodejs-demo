@@ -17,6 +17,6 @@ function task(){
 
 console.time('DOWNLODE FILE');
 var n = task();
-console.timeEnd('DOWMLODE FILE');
+console.timeEnd('DOWNLODE FILE');
 
 console.log('n = %d',n);

@@ -2,7 +2,11 @@
 
 var fn = process.argv[2];
 
-console.log(fn,'=',eval(fn));
+if(fn === '--help' || fn === '-h' || fn === 'undefined'){
+  console.log('请输入参数！');
+}else{
+  console.log(fn,'=',eval(fn));
+}
 
 
 /*
