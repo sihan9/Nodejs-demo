@@ -6,7 +6,7 @@ function Radio(station){
  var self = this;
 
  for(var m in EventEmitter.prototype){
-   this[m]= EventEmitter.prototype;
+   this[m]= EventEmitter.prototype[m];
  }
 
  setTimeout(()=>{
