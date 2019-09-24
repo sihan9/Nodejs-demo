@@ -4,16 +4,16 @@ const EventEmitter = require('events').EventEmitter,
       util =require('util');
 
 function Radio(station){
- EventEmitter.call(this) ;
+  EventEmitter.call(this) ;
 
- var self = this;
+  var self = this;
 
- setTimeout(()=>{
-   self.emit('play',station)
- },0);
- setTimeout(()=>{
-   self.emit('stop',station);
- },5000);
+  setTimeout(()=>{
+    self.emit('play',station);
+  },0);
+  setTimeout(()=>{
+    self.emit('stop',station);
+  },5000);
 }
 
 //继承

@@ -1,12 +1,11 @@
 #!/usr/bin/node
 const fs = require('fs'),
-      log=console.log,
       http = require('http'),
       file = process.argv[2],
       path = require('path');
 if(process.argv.length !== 3) {
-    console.error('命令行参数格式：cmd fileName');
-    process.exit(1);
+  console.error('命令行参数格式：cmd fileName');
+  process.exit(1);
 }
 //示例参数 ./qr-code.jpg
 try{

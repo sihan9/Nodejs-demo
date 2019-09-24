@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-cosnt GreenStream = require('./04-green-stream.js'),
+const GreenStream = require('./04-green-stream.js'),
       stdin = process.stdin;
 
 var g = new GreenStream();

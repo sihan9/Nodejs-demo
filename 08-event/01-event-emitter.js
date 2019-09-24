@@ -14,8 +14,8 @@ global.setTimeout(function(){
 
 e.on('hello',function(){
   console.log('hello event emit!');
-})
+});
 e.on('bye',function(){
   console.log('bye!');
   process.exit();
-})
+});

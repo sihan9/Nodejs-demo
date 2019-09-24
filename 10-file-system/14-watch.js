@@ -5,7 +5,7 @@ const fs = require('fs'),
 
 
 fs.watch(dst,function (evt,file){
-  console.log("%s happend with file:%s",evt,file);
+  console.log('%s happend with file:%s',evt,file);
 });//监控目录
 //fs.watchFile(dst);//监控文件
 

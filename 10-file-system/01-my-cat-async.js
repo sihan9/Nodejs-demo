@@ -11,4 +11,4 @@ fs.readFile(file,function(err,data){
     console.log(data.toString('utf8'));
   }
   
-})
+});

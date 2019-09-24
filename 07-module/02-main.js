@@ -17,6 +17,6 @@ const circle =  require('./02-export-object.js'),
 log('r = 10 ,circle diameter:',circle.diameter(10));
 log('r = 10 ,circle area:',circle.area(10));*/
 const circle = require('./02-export-object-v2.js'),
-  log = console.log;
+      log = console.log;
 log('r = 10 ,circle area:',circle.area(10));
 log('r = 10 ,circle area:',circle.area(10));

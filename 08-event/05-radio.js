@@ -4,7 +4,7 @@ function Radio(station){
   var _listeners ={};
 
   setTimeout(()=>{
-    emit('play',station)
+    emit('play',station);
   },0);
 
   setTimeout(()=>{
@@ -15,7 +15,7 @@ function Radio(station){
     if(typeof(_listeners[evt]) === 'undefined'){
       console.err('Error:%s not defined',evt);
       process.exit(1);
-    };
+    }
     _listeners[evt].forEach((fn)=>{
       fn.call(this,arg);
     });
@@ -23,7 +23,7 @@ function Radio(station){
   this.on = (evt,fn)=>{
     if(typeof( _listeners[evt]) === 'undefined'){
       _listeners[evt]=[];
-    };
+    }
     _listeners[evt].push(fn);
   };
 }
