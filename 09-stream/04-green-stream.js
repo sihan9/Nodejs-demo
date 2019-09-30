@@ -13,3 +13,4 @@ GreenStream.prototype._write = function(chunk,encoding,callback){
 
 };
 module.exports = GreenStream;
+//process.stdin.pipe(new GreenStream);

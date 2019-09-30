@@ -16,7 +16,7 @@ MyReadable.prototype._read = function(){
 };
 
 
-module.exports = MyReadable;
-
-
+//module.exports = MyReadable;
+var rs = new MyReadable();
+rs.pipe(process.stdin);
 
