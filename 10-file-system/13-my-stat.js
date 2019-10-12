@@ -2,5 +2,9 @@
 
 const fs = require('fs'),
       dst = process.argv[2];
-console.log(fs.statSync(dst));
-
+try{
+  console.log(fs.statSync(dst));
+} catch(err) {
+  console.error(err.message);
+  process.exit(1);
+}
