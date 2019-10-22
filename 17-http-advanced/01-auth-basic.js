@@ -11,6 +11,7 @@ http.createServer((req,res)=>{
     case '/admin':
       var auth = req.headers.authorization;
       if(typeof auth !== 'undefined'){
+        var usr = getUserNamePwd(auth);
         if(usr.username === 'wangding' && usr.password === '123'){
           showSecret(req,res);
         }else{
@@ -21,7 +22,6 @@ http.createServer((req,res)=>{
         res.setHeader('www-authenticate','basic');
         showNormal(res);
       }
-      getUserNamePwd(auth);
       break;
     default:
       showNormal(res);
@@ -41,9 +41,9 @@ function showNormal(res){
 
 function getUserNamePwd(auth){
   log('authorization:',auth);
-  auth = auth.split('');
-  if(auth[0] === 'Basic'){
-    var buf = new Buffer(auth[1],'base64');
+  var ath = auth.split(' ');
+  if(ath[0] === 'Basic'){
+    var buf = new Buffer(ath[1],'base64');
     var usr = buf.toString('utf8').split(':');
     log('username:',usr[0]);
     log('password:',usr[1]);
