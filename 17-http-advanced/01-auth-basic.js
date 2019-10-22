@@ -21,12 +21,12 @@ http.createServer((req,res)=>{
         res.setHeader('www-authenticate','basic');
         showNormal(res);
       }
+      getUserNamePwd(auth);
       break;
     default:
       showNormal(res);
       break;
   }
-  getUserNamePwd(auth);
   res.end('OK!');
 
 }).listen(8080);
