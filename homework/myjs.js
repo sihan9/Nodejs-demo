@@ -4,17 +4,12 @@ const url  = require('url'),
       fs   = require('fs'),
       qs   = require('querystring'),
       http = require('http'),
-      path = require('path'),
+      //path = require('path'),
       log  = console.log;
-var express = require('express'),
-    app = express();
+//var express = require('express'),
+//    app = express();
 
-//app.use(express.static('css'));
-//app.use(express.static('js'));
-//app.use(express.static('images'));
-
-//log(path.join(__dirname,'static'));
-app.use(express.static(path.join(__dirname,'public')));
+//app.use(express.static(path.join(__dirname,'public')));
 
 http.createServer((req,res)=>{
   log(`${req.method} ${req.url} HTTP/${req.httpVersion}`);
@@ -22,15 +17,9 @@ http.createServer((req,res)=>{
   log('');
 
   req.pipe(process.stdout);
-  //log(req.url === '/list');
   if(req.method ==='GET' && req.url ==='/list/'){
-    //res.writeHead(200,{'Content-Type':'text/html'});
-    res.writeHead(200, {
-      'Content-Type': 'text/html',
-      'Content-Length': Buffer.byteLength(fs.readFileSync('public/chapterList.html').toString('utf8')),
-      'Access-Control-Allow-Origin': '*'
-    }); 
-    res.end(fs.readFileSync('public/chapterList.html').toString('utf8'));
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(fs.readFileSync('./chapterList.html').toString('utf8'));
   }else if(req.method === 'GET' && req.url ==='/login/'){
     //res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./login.html').toString('utf8'));
@@ -40,12 +29,9 @@ http.createServer((req,res)=>{
   }else if(req.method === 'GET' && req.url ==='/addChapter/'){
     //res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./addChapter.html').toString('utf8'));
-    
-  /*}else if(req.url === '/list/css/base.css'){
-    res.writeHead(200,{'Content-Type':'text/css'});
-  }else if(req.url ==='/list/css/style.css'){
-    res.writeHead(200,{'Content-Type':'text/css'});
-  */
+  }else if(req.method === 'GET' && (req.url ==='/detail?chapterId=1' ||req.url ==='/detail?chapterId=2'||req.url ==='/detail?chapterId=3'||req.url ==='/detail?chapterId=4')){
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.end(fs.readFileSync('./chapter.html').toString('utf8'));
   }else{
     res.end(req.url+'error!');
   }
