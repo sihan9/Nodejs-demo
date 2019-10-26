@@ -3,8 +3,7 @@
 const http = require('http'),
       addr = 'http://localhost:8080/',
       url  = require('url'),
-      msg  = process.argv[2];
-
+      msg  = process.argv[2]||'i am your friend!';
 var option = url.parse(addr);
 option.method = 'POST';
 
@@ -17,4 +16,4 @@ var req = http.request(option,function(res){
   //打印响应体
   res.pipe(process.stdout);
 });
-req.end(msg);
+req.end(msg+'\n');

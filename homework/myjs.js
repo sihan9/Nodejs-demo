@@ -1,42 +1,25 @@
 #!/usr/bin/node
 
-const http = require('http'),
-      fs   = require('fs'),
-      log  = console.log,
-      qs   = require('querystring');
-
-var items = ['eat'];
-
-http.createServer(function(req, res) {
-  log(`${req.method} ${req.url} HTTP/${req.httpVersion}`);
-  log(req.headers);
-  log('');
-  if(req.method === 'GET' && req.url === '/'){
-    res.writeHead(200,{'Content-Type':'text/html'});
-    res.end(getHTML());
-  }else if(req.method === 'POST' && req.url === '/'){
-    var it = '';
-    req.on('data',(data)=>{
-      it += data;
+const url  = require('url'),
+      qs   = require('querystring'),
+      log  = console.log;
+var listurl = 'https://sihan9.github.io/nodejs-demo/homework/chapterList.html';
+const http = require('http');
+//https = require('https');
+ 
+http.createServer((req, res) => {
+  var addr = url.parse(req.url);
+  if(addr.pathname === '/list' ){
+    http.get(listurl,function(res){
+      res.pipe(process.stdout);
     });
-    req.on('end',()=>{
-      if(typeof it !== 'undefined'){
-        items.push(qs.parse(it).item);
-      }
-      res.end(getHTML());
-    });
-  }else{
-    res.end('error!');
   }
+  //log(`${req.method} ${req.url} HTTP/${req.httpVersion}`);
+  //log(req.headers);
+  //log('');
+
+  //req.pipe(process.stdout);
+
+  res.end('OK!');
 
 }).listen(8080);
-
-function getHTML(){
-  //read html file
-  var html = fs.readFileSync('todo.html').toString('utf8');
-  //write real data
-  html =  html.replace('%',items.map(function(item){
-    return '<li>' + item + '</li>';}).join('\n'));
-  //return html string
-  return html;
-}
