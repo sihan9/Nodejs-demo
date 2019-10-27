@@ -18,20 +18,30 @@ http.createServer((req,res)=>{
 
   req.pipe(process.stdout);
   if(req.method ==='GET' && req.url ==='/list/'){
+
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./chapterList.html').toString('utf8'));
+
   }else if(req.method === 'GET' && req.url ==='/login/'){
+
     //res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./login.html').toString('utf8'));
+
   }else if(req.method === 'GET' && req.url ==='/listmanager/'){
+
     //res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./list.html').toString('utf8'));
+
   }else if(req.method === 'GET' && req.url ==='/addChapter/'){
+
     //res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./addChapter.html').toString('utf8'));
+
   }else if(req.method === 'GET' && (req.url ==='/detail?chapterId=1' ||req.url ==='/detail?chapterId=2'||req.url ==='/detail?chapterId=3'||req.url ==='/detail?chapterId=4')){
+
     res.writeHead(200,{'Content-Type':'text/html'});
     res.end(fs.readFileSync('./chapter.html').toString('utf8'));
+    
   }else{
     res.end(req.url+'error!');
   }
