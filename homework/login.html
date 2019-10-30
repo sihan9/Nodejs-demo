@@ -98,20 +98,17 @@
     <div class="login">
         <div class="leftpart"></div>
         <div class="loginform">
-            <form class="myform">
-                <input type="text" autocomplete="off" placeholder="帐号" class="el-input__inner"  id="username" />
+            <form class="myform" action="http://localhost:8083/login/" method="GET">
+                <input type="text" autocomplete="off" placeholder="帐号" class="el-input__inner"  id="username" name="username"/>
                 
-                <input type="password" autocomplete="off" placeholder="密码" class="el-input__inner"  id="pwd" />
-            
+                <input type="password" autocomplete="off" placeholder="密码" class="el-input__inner"  id="pwd"  name="pwd"/>
+                
+                <!-- <input type="submit" class="el-button login-btn-submit el-button--primary" id="login" value="登录"/> -->
                 <button type="button" class="el-button login-btn-submit el-button--primary" id="login"><!----><!----><span>登录</span></button>
             </form>
         </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>
-
-
-    
-</script>
+<script src="./js/login.js"></script>
 </html>
