@@ -31,6 +31,9 @@ http.createServer((req,res)=>{
 
 function getHtml(req,res){
   var file = __dirname;
+  if(req.url === '/listmanager/bg.jpg'){
+    log(req.url);
+  }
   //在 路由/data/ 下显示字符串类型data数据
   // if(req.url === '/data/'){
   //   let data = JSON.stringify(chapterList);
@@ -109,10 +112,10 @@ function getHtml(req,res){
     let listurl = req.url.split('?')[0];
     let listurls = listurl.split('/');
     for(var i =1 ;i<listurls.length;i++){
-        if(listurls[i] === 'list' || listurls[i] ==='login')
+        if(listurls[i] === 'list' || listurls[i] ==='login'|| listurls[i] ==='listmanager' || listurls[i] === "addChapter")
           continue;
         else
-          file =file+'/' +listurls[i];
+        file =file+'/' +listurls[i];
     }
     //读取文件到页面
     fs.readFile(file,(err,data)=>{
@@ -140,6 +143,7 @@ function getHtml(req,res){
     res.writeHead(200,{'Content-Type':'text/json'});
     res.end(JSON.stringify(chapterList));
   }
+  
 }
 
 function retHtml(req,res){
@@ -176,7 +180,7 @@ function retHtml(req,res){
       newlist.chapterId = chapterList.length+1;
       newlist.chapterName = title;
       newlist.imgPath = "images/1442457564979540.jpeg";
-      newlist.chapterDes = title;
+      newlist.chapterDes = content;
       newlist.chapterContent = content;
       newlist.publishTimer = "2019-08-19";
       newlist.author = "admin";

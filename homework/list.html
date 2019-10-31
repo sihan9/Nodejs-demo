@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -115,12 +115,14 @@
                             </tr>
                         </thead>
 
-                        <tbody id="result"></tbody>
+                        <tbody id="result">
+                            
+                        </tbody>
 
 
 
 
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 109
                             </td>
@@ -203,15 +205,41 @@
                                     <td>
                                         213
                                     </td>
-                        </tr>
+                        </tr> -->
                     </table>
         </div>
     </div>
     
         
 </body>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
 <script>
-   
+  var result = document.getElementById('result');
+  fetch('http://localhost:8083/mylist/',{method:'GET'})
+  .then((res) => {
+    return res.json();
+  })
+  .then((res)=>{
+    // console.log(res);
+    var str=``;
+    for(let i=0;i<res.length;i++){
+      str+=
+        `<tr>
+            <td>
+                ${res[i].chapterId}
+            </td>
+            <td>
+                ${res[i].chapterName}
+            </td>
+            <td>
+                ${res[i].views}
+            </td>
+            <td>
+                213
+            </td>
+        </tr>`;
+    }
+    result.innerHTML+=str;
+  });
 </script>
 </html>
